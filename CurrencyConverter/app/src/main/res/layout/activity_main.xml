@@ -7,6 +7,7 @@
         <variable
             name="currencyViewModel"
             type="com.currencyConverter.ui.CurrencyViewModel" />
+        <import type="android.view.View"/>
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -18,121 +19,138 @@
             android:id="@+id/currency_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Currency converter"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:textColor="@color/colorPrimaryDark"
-            app:layout_constraintTop_toTopOf="parent"
             android:layout_marginTop="24dp"
+            android:text="Currency converter"
+            android:textColor="@color/colorPrimaryDark"
             android:textSize="20sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/from_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="From:"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/currency_tv"
-            android:textColor="@color/colorAccent"
             android:layout_marginStart="20dp"
             android:layout_marginTop="25dp"
+            android:text="From:"
+            android:textColor="@color/colorAccent"
             android:textSize="20sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/currency_tv" />
 
         <Spinner
             android:id="@+id/given_spinner"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="25dp"
-            android:spinnerMode="dropdown"
             android:backgroundTint="@color/colorAccent"
-            app:layout_constraintTop_toBottomOf="@id/currency_tv"
+            android:spinnerMode="dropdown"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/from_tv"
-            app:layout_constraintEnd_toEndOf="parent" />
+            app:layout_constraintTop_toBottomOf="@id/currency_tv"
+            tools:listitem="@layout/item_spinner" />
 
         <TextView
             android:id="@+id/to_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="To:"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/from_tv"
-            android:textColor="@color/colorAccent"
             android:layout_marginStart="20dp"
             android:layout_marginTop="25dp"
+            android:text="To:"
+            android:textColor="@color/colorAccent"
             android:textSize="20sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/from_tv" />
 
         <Spinner
             android:id="@+id/required_spinner"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="25dp"
-            android:spinnerMode="dropdown"
             android:backgroundTint="@color/colorAccent"
+            android:spinnerMode="dropdown"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/given_spinner"
             app:layout_constraintStart_toEndOf="@id/from_tv"
+            app:layout_constraintTop_toBottomOf="@id/given_spinner"
 
             />
+
         <TextView
             android:id="@+id/amount_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="The amount"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/amount_tv"
-            app:layout_constraintTop_toBottomOf="@id/required_spinner"
-            android:textColor="@color/colorPrimaryDark"
-            android:layout_marginTop="25dp"
             android:layout_marginStart="60dp"
+            android:layout_marginTop="25dp"
+            android:text="The amount"
+            android:textColor="@color/colorPrimaryDark"
             android:textSize="20sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            app:layout_constraintEnd_toStartOf="@id/amount_tv"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/required_spinner" />
+
         <EditText
             android:id="@+id/amount_ed"
             android:layout_width="100dp"
             android:layout_height="50dp"
-            android:background="#E9DFFA"
             android:layout_marginTop="16dp"
+            android:background="#E9DFFA"
             android:text="@{currencyViewModel.amount}"
-            app:layout_constraintTop_toBottomOf="@id/amount_tv"
+            app:layout_constraintEnd_toStartOf="@+id/result_ed"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/result_ed"/>
+            app:layout_constraintTop_toBottomOf="@id/amount_tv" />
+
         <TextView
             android:id="@+id/result_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="The result"
-            app:layout_constraintStart_toEndOf="@id/amount_tv"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/required_spinner"
-            android:textColor="@color/colorPrimaryDark"
             android:layout_marginTop="25dp"
+            android:text="The result"
+            android:textColor="@color/colorPrimaryDark"
             android:textSize="20sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/amount_tv"
+            app:layout_constraintTop_toBottomOf="@id/required_spinner" />
+
         <EditText
             android:id="@+id/result_ed"
             android:layout_width="100dp"
             android:layout_height="50dp"
-            android:background="#E9DFFA"
             android:layout_marginTop="16dp"
+            android:background="#E9DFFA"
             android:editable="false"
             android:text="@{currencyViewModel.result}"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/result_tv"
-            app:layout_constraintStart_toEndOf="@id/amount_ed" />
+            app:layout_constraintStart_toEndOf="@id/amount_ed"
+            app:layout_constraintTop_toBottomOf="@id/result_tv" />
+
         <Button
+            android:id="@+id/button"
             android:layout_width="100dp"
             android:layout_height="50dp"
             android:layout_marginTop="24dp"
             android:background="@color/colorPrimaryDark"
-            android:text="Convert"
             android:onClick="@{()->currencyViewModel.getTheResult()}"
+            android:text="Convert"
             android:textColor="@android:color/white"
-            app:layout_constraintTop_toBottomOf="@id/result_ed"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"/>
+            app:layout_constraintTop_toBottomOf="@id/result_ed" />
 
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="60dp"
+            android:visibility="@{currencyViewModel.loading?View.VISIBLE:View.INVISIBLE}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/button" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

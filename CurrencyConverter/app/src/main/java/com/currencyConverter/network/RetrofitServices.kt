@@ -11,14 +11,15 @@ import java.util.concurrent.TimeUnit
 
 interface RetrofitServices {
     @GET("symbols")
-   suspend fun getCurrency(@Query("access_key")string: String):CurrencyResponse
+    suspend fun getCurrency(@Query("access_key") string: String): CurrencyResponse
 
     @GET("covert")
-    @FormUrlEncoded
-    suspend fun getResult(@Query("access_key")string: String
-                          , @Query("from") from:String,
-                          @Query("to")to:String,
-                          @Query("amount")amount:String):ResultResponse
+    suspend fun getResult(
+        @Query("access_key") string: String
+        , @Query("from") from: String,
+        @Query("to") to: String,
+        @Query("amount") amount: String
+    ): ResultResponse
 
     companion object {
         fun create(): RetrofitServices {

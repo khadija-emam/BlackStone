@@ -9,5 +9,9 @@ data class CurrencyResponse (
 )
 data class ResultResponse (
     @SerializedName("sucess")val success:Boolean,
-    @SerializedName("result")val result:String
+    @SerializedName("result")val result:String,
+    @SerializedName("error")val error:Error
     )
+data class Error(
+    @SerializedName("info")val info:String
+)
